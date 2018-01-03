@@ -5,13 +5,16 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import android_session.com.onsen_search.R;
+import android_session.com.onsen_search.fragment.AppTopFragment;
 import android_session.com.onsen_search.fragment.BaseFragment;
 
 public class MainActivity extends FragmentActivity {
     private static final String KEY_FRAGMENT = "key_fragment";
     private BaseFragment mCurrentFragment;
+    private String TAG = "MainActivity";
 
     public enum ScreenKind {
         APP_TOP,
@@ -33,12 +36,14 @@ public class MainActivity extends FragmentActivity {
     }
 
     public boolean transitionScreen(ScreenKind nextScreen){
+        Log.d("MainActivity", "transitionScreen: " + nextScreen);
         if(nextScreen == null) {
             finish();
             return true;
         }
         switch(nextScreen) {
             case APP_TOP:
+                mCurrentFragment = new AppTopFragment();
                 break;
             case ONSEN_SEARCH:
                 break;
@@ -52,7 +57,7 @@ public class MainActivity extends FragmentActivity {
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-        transaction.replace(R.id.container, mCurrentFragment, KEY_FRAGMENT);
+        transaction.add(R.id.container, mCurrentFragment, KEY_FRAGMENT);
         transaction.commit();
         return true;
     }

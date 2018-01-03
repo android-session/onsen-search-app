@@ -1,0 +1,56 @@
+ <LinearLayout
+     xmlns:android="http://schemas.android.com/apk/res/android"
+     android:orientation="vertical"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/onsen_search"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/app_top_item_selector"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/default_margin_middle"
+            android:gravity="center_vertical|right"
+            android:textSize="@dimen/title_text_size"
+            android:textColor="@color/white"
+            android:text="@string/onsen_search_title"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/thick_divider_size"
+        android:background="@color/black" />
+    <LinearLayout
+        android:id="@+id/info"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/app_top_item_selector"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/default_margin_middle"
+            android:gravity="center_vertical|right"
+            android:textSize="@dimen/title_text_size"
+            android:textColor="@color/white"
+            android:text="@string/info"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/thick_divider_size"
+        android:background="@color/black" />
+
+ </LinearLayout>

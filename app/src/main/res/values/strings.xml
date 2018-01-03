@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">onsen-search</string>
+    <string name="onsen_search_title">温泉検索</string>
+    <string name="info">info</string>
 </resources>
