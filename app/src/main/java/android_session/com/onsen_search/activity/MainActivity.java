@@ -10,6 +10,7 @@ import android.util.Log;
 import android_session.com.onsen_search.R;
 import android_session.com.onsen_search.fragment.AppTopFragment;
 import android_session.com.onsen_search.fragment.BaseFragment;
+import android_session.com.onsen_search.fragment.OnsenSearchFragment;
 
 public class MainActivity extends FragmentActivity {
     private static final String KEY_FRAGMENT = "key_fragment";
@@ -46,6 +47,7 @@ public class MainActivity extends FragmentActivity {
                 mCurrentFragment = new AppTopFragment();
                 break;
             case ONSEN_SEARCH:
+                mCurrentFragment = new OnsenSearchFragment();
                 break;
             case SEARCH_RESULT:
                 break;
@@ -56,10 +58,17 @@ public class MainActivity extends FragmentActivity {
         }
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-        transaction.add(R.id.container, mCurrentFragment, KEY_FRAGMENT);
+        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        transaction.replace(R.id.container, mCurrentFragment, KEY_FRAGMENT);
         transaction.commit();
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (mCurrentFragment == null || !mCurrentFragment.onBackPressed()) {
+            super.onBackPressed();
+        }
     }
 }
 

@@ -3,6 +3,7 @@ package android_session.com.onsen_search.fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 
 import java.lang.ref.WeakReference;
 
@@ -16,6 +17,7 @@ import android_session.com.onsen_search.activity.MainActivity.ScreenKind;
 public abstract class BaseFragment extends Fragment {
     protected MainActivity.ScreenKind mReturnDestinationScreen = null;
     protected WeakReference<MainActivity> mMainActivity = null;
+    private String TAG = "BaseFragment";
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -52,6 +54,7 @@ public abstract class BaseFragment extends Fragment {
     }
 
     public boolean onBackPressed() {
+        Log.d(TAG, "onBackPressed:" + mReturnDestinationScreen);
         return transitionScreen(mReturnDestinationScreen);
     }
 
